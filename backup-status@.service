@@ -4,5 +4,4 @@ Description=Status email for %I backup
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/systemd-email netzwerk@raumzeitlabor.de backup@%i
-User=nobody
 Group=systemd-journal
