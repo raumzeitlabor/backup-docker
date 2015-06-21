@@ -1,0 +1,10 @@
+[Unit]
+Description=Run backup of %I container
+After=network.target
+OnFailure=backup-status@%i.service
+
+[Service]
+ExecStart=/usr/bin/docker run --rm=true --hostname=%i-backup --volumes-from=backup-data --volumes-from=%i-data raumzeitlabor/backup %i backup
+
+[Install]
+WantedBy=multi-user.target

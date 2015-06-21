@@ -1,0 +1,12 @@
+#!/bin/bash
+
+bsd-mailx $1 -s $2 \
+        -a "Content-Transfer-Encoding: 8bit" \
+        -a "Content-Type: text/plain; charset=UTF-8" <<ERRMAIL
+
+$(systemctl status "$2")
+
+== LOGS ==
+
+$(journalctl -u "$2")
+ERRMAIL
