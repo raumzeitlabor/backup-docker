@@ -87,3 +87,7 @@ Simply mount a host directory into the backup container or restore directly
 onto another container. For example:
 
     docker run --rm=true -it -v /srv/restore:/restore --hostname=mediawiki-backup --volumes-from=backup-data --volumes-from=mediawiki-data:ro raumzeitlabor/backup mediawiki restore /restore
+
+In case of a loss of the backup-data container, restore the backup
+configuration to the folder that is shared into the backup containers (e.g.
+`/srv/backupconf`) and then start the restore.
